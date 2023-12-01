@@ -14,7 +14,9 @@ CREATE TABLE IF NOT EXISTS departments (
     department_id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
     building VARCHAR(255) NOT NULL,
-    floor INT NOT NULL
+    floor INT NOT NULL,
+    hospital_id INT,
+    FOREIGN KEY (hospital_id) REFERENCES hospitals(hospital_id)
 );
 
 -- Create a table for practitioners
@@ -22,7 +24,9 @@ CREATE TABLE IF NOT EXISTS practitioners (
     practitioner_id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
     profession VARCHAR(255) NOT NULL,
-    specialty VARCHAR(255)
+    specialty VARCHAR(255),
+    department_id INT,
+    FOREIGN KEY (department_id) REFERENCES departments(department_id)
 );
 
 -- Create a table for patients
